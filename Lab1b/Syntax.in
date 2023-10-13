@@ -1,8 +1,7 @@
-
 The words - predefined tokens are specified between " and ":
 Sintactical rules: (file Syntax.in)
 program ::= "prog {" stmtlist "}"
-declaration ::= IDENTIFIER ":" type ";"
+declaration ::= IDENTIFIER ":" type
 type1 ::= "char" | "int" | "str" | "bool"
 arraydecl ::= "arr" "(" type1 ")" "[" INTCONST "]"
 type  ::= type1|arraydecl
