@@ -1,2 +1,2 @@
-# LFTC
-My homework from LFTC class.
+# FLCT
+My homework from FLCT class.
