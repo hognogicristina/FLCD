@@ -3,30 +3,27 @@ from SymbolTable import SymbolTable
 def main():
     symbol_table = SymbolTable(10)
 
-    symbol_table.add_symbol("x")
-    symbol_table.add_symbol("y")
-    symbol_table.add_symbol("z")
+    # Add some identifiers and constants
+    symbol_table.add_identifier("variable1")
+    symbol_table.add_identifier("variable2")
+    symbol_table.add_constant(42)
+    symbol_table.add_constant(3)
 
-    code_x = symbol_table.get_code("x")
-    if code_x is not None:
-        print(f"Code for symbol 'x': {code_x}")
-    else:
-        print("Symbol 'x' not found in the symbol table.")
+    # Check if identifiers and constants are in the symbol table
+    print("Is 'variable1' an identifier?", symbol_table.has_identifier("variable1"))
+    print("Is 'variable2' an identifier?", symbol_table.has_identifier("variable2"))
+    print("Is 'variable3' an identifier?", symbol_table.has_identifier("variable3"))
+    print("Is '42' a constant?", symbol_table.has_constant(42))
+    print("Is '3' a constant?", symbol_table.has_constant(3))
 
-    code_w = symbol_table.get_code("w")
-    if code_w is not None:
-        print(f"Code for symbol 'w': {code_w}")
-    else:
-        print("Symbol 'w' not found in the symbol table.")
+    # Get the positions (bucket indexes) for identifiers and constants
+    print("Position of 'variable1' in identifiers:", symbol_table.get_position_identifier("variable1"))
+    print("Position of 'variable2' in identifiers:", symbol_table.get_position_identifier("variable2"))
+    print("Position of '42' in constants:", symbol_table.get_position_constant(42))
+    print("Position of '3' in constants:", symbol_table.get_position_constant(3))
 
+    # Print the symbol table
     print(symbol_table)
 
 if __name__ == "__main__":
     main()
-
-'''
-Output:
-Code for symbol 'x': 0
-Symbol 'w' not found in the symbol table.
-SymbolTable { symbols and codes=[(z, 2) ][][(y, 1) ][][(x, 0) ][][][][][] }
-'''

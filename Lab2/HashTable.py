@@ -48,3 +48,7 @@ class HashTable:
         if hash_value != -1:
             return hash_value  # Return the bucket index where the key would be stored
         return -1
+
+    # Return a string representation of the hash table
+    def __str__(self):
+        return str(self.hashTable)

@@ -1,39 +1,38 @@
 from HashTable import HashTable
 
-class SymbolTable(HashTable):
-    def __init__(self, capacity):
-        super().__init__(capacity)
-        self.next_code = 0
+class SymbolTable:
+    def __init__(self, size):
+        # Initialize the SymbolTable with a given size
+        self.size = size
+        # Create separate hash tables for identifiers and constants
+        self.identifiers_hash_table = HashTable(size)
+        self.constants_hash_table = HashTable(size)
 
-    # Add a symbol to the symbol table with an associated incremental value
-    def add_symbol(self, symbol):
-        # Get the hash value for the symbol
-        hash_value = self.get_hash_value(symbol)
-        # If the symbol is not already in the symbol table, add it with the next code
-        if not self.contains(symbol):
-            code = self.next_code
-            self.next_code += 1
-            # Add the symbol and its code at the beginning of the bucket
-            self.hashTable[hash_value].insert(0, (symbol, code))
+    def add_identifier(self, name):
+        # Add an identifier to the identifiers hash table
+        return self.identifiers_hash_table.add(name)
 
-    # Retrieve the code associated with a symbol from the symbol table
-    def get_code(self, symbol):
-        # Get the hash value for the symbol
-        hash_value = self.get_hash_value(symbol)
-        for item in self.hashTable[hash_value]:
-            if item[0] == symbol:
-                return item[1]  # Return the code associated with the symbol
-        return None
+    def add_constant(self, name):
+        # Add a constant to the constants hash table
+        return self.constants_hash_table.add(name)
+
+    def has_identifier(self, name):
+        # Check if an identifier exists in the identifiers hash table
+        return self.identifiers_hash_table.contains(name)
+
+    def has_constant(self, name):
+        # Check if a constant exists in the constants hash table
+        return self.constants_hash_table.contains(name)
+
+    def get_position_identifier(self, name):
+        # Get the position of an identifier in the identifiers hash table
+        return self.identifiers_hash_table.get_position(name)
+
+    def get_position_constant(self, name):
+        # Get the position of a constant in the constants hash table
+        return self.constants_hash_table.get_position(name)
 
     def __str__(self):
-        result = "SymbolTable { symbols and codes="
-        non_empty_buckets = [bucket for bucket in self.hashTable if bucket]
-        for bucket in non_empty_buckets:
-            result += "["
-            for item in bucket:
-                result += f"({item[0]}, {item[1]}) "
-            result += "]"
-        empty_buckets = self.capacity - len(non_empty_buckets)
-        result += "[] " * empty_buckets
-        result += "}"
-        return result
+        # Return a string representation of the SymbolTable
+        return ("SymbolTable{" + "identifiers_hash_table=" + str(self.identifiers_hash_table) +
+                "\nconstants_hash_table=" + str(self.constants_hash_table) + "}")
