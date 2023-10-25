@@ -18,16 +18,16 @@ end;
 sys.write("Sum: ")
 sys.write(sum)
 
-nr: arr(int) [10]
+#nr: arr(int) [10]
 max: int
 min: int
 
-sys.read(nr)
-max = -999999
+sys.read(#nr)
+max = neg999999
 min = 999999
 
 // Compute the max/min of n numbers
-foreach num in nr
+foreach num in #nr
 begin:
 	if num > max
 	begin:

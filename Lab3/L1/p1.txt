@@ -1,24 +1,24 @@
 // Min of 3 numbers
 
 a: int
-b: int
+#b: int
 c: int
 
 sys.read(a)
-sys.read(b)
+sys.read(#b)
 sys.read(c)
 
-smallest: int
-smallest = a
+#smallest: int
+#smallest = a
 
-if smallest > b
+if #smallest > #b
 begin:
-	smallest = b
+	#smallest = #b
 end;
 
-if smallest > c
+if #smallest > c
 begin:
-	smallest = c
+	#smallest = c
 end;
 
-sys.write(smallest)
+sys.write(#smallest)

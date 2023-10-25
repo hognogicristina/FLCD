@@ -88,7 +88,7 @@ class Scanner:
         return self.symbol_table.has_hash(possible_identifier)
 
     def treat_identifier(self):
-        regex_for_identifier = re.compile(r'^([a-zA-Z_][a-zA-Z0-9_]*)')  # Updated regex
+        regex_for_identifier = re.compile(r'^([#]?[a-zA-Z_][a-zA-Z0-9_]*)')  # Updated regex
         match = regex_for_identifier.match(self.program[self.index:])
         if not match:
             return False
@@ -107,7 +107,7 @@ class Scanner:
         possible_token = self.program[self.index:].split(" ")[0]
         for reserved_token in self.reserved_words:
             if possible_token.startswith(reserved_token):
-                regex = f"^[a-zA-Z0-9_]*{reserved_token}[a-zA-Z0-9_]+"
+                regex = f"^[#]?[a-zA-Z0-9_]*{reserved_token}[a-zA-Z0-9_]+"  # Updated regex
                 if re.compile(regex).search(possible_token):
                     return False
                 self.index += len(reserved_token)

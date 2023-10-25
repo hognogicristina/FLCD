@@ -53,3 +53,6 @@ class HashTable:
     # Return a string representation of the hash table
     def __str__(self):
         return str(self.hashTable)
+
+    def to_list(self):
+        return self.hashTable

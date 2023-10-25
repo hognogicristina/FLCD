@@ -22,4 +22,6 @@ class SymbolTable:
 
     def __str__(self):
         # Return a string representation of the SymbolTable
-        return "SymbolTable { " + "hash_table=" + str(self.hash_table) + " }"
+        return "SymbolTable {\n" + "\n".join([str(item) for item in self.hash_table.to_list()]) + "\n}"
+
+
