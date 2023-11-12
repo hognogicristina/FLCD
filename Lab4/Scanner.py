@@ -16,7 +16,7 @@ class Scanner:
         self.token_positions = {}
 
     def read_tokens(self):
-        token_file_path = os.path.join(os.path.dirname(__file__), 'L1', 'token.in')
+        token_file_path = os.path.join(os.path.dirname(__file__), 'utilities', 'token.in')
         try:
             with open(token_file_path, "r") as file:
                 lines = file.read().splitlines()
@@ -29,7 +29,7 @@ class Scanner:
                         self.tokens.append(token)
                     self.token_positions[token] = i
         except FileNotFoundError:
-            print("Error: 'token.in' file not found in the 'L1' directory")
+            print("Error: 'token.in' file not found in the 'utilities' directory")
 
     def set_program(self, program):
         self.program = program
@@ -160,7 +160,7 @@ class Scanner:
 
     def scan(self, program_file_name):
         try:
-            with open(os.path.join("L1", program_file_name), "r") as file:
+            with open(os.path.join("utilities", program_file_name), "r") as file:
                 self.set_program(file.read())
                 while self.index < len(self.program):
                     self.next_token()

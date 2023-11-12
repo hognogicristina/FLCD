@@ -1,22 +1,20 @@
 import re
-from Transition import Transition
-
+from Transition import Transition  # Assuming Transition class is defined in a separate module
 
 # Function to print a list of strings enclosed in curly braces
 def print_list_of_string(list_name, lst):
     print(f"{list_name} = {{{', '.join(lst)}}}")
-
 
 # Finite Automaton (FA) class
 class FA:
     def __init__(self, filename):
         # Initialize the FA object with a given filename
         self.filename = filename
-        self.states = []  # List to store states
-        self.alphabet = []  # List to store the alphabet symbols
-        self.transitions = []  # List to store transitions between states
-        self.initial_state = ""  # Initial state of the FA
-        self.output_states = []  # List to store output states
+        self.states = []              # List to store states
+        self.alphabet = []            # List to store the alphabet symbols
+        self.transitions = []         # List to store transitions between states
+        self.initial_state = ""       # Initial state of the FA
+        self.output_states = []       # List to store output states
         try:
             self.init()  # Initialize the FA by parsing the file
         except Exception as e:
@@ -89,21 +87,17 @@ class FA:
 
     def check_accepted(self, word):
         # Check if a given word is accepted by the FA
+        word_as_list = list(word)
         current_state = self.initial_state
-        for c in word:
-            # Find the transition for the current character
-            next_state = None
+        for c in word_as_list:
+            found = False
             for transition in self.transitions:
                 if transition.get_from() == current_state and transition.get_label() == c:
-                    next_state = transition.get_to()
+                    current_state = transition.get_to()
+                    found = True
                     break
-            if next_state is None:
-                # No transition found for the current character
+            if not found:
                 return False
-            else:
-                # Transition found, update the current state
-                current_state = next_state
-        # Check if the current state is an output state
         return current_state in self.output_states
 
     def get_next_accepted(self, word):

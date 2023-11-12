@@ -17,4 +17,4 @@ transitions={(p, q, A); (p, q, B); (p, q, C); (p, q, D); (p, q, E); (p, q, F); (
 (s, s, s); (s, s, R); (s, s, S); (s, s, T); (s, s, U); (s, s, V); (s, s, W); (s, s, X); (s, s, Y); (s, s, Z); (s, s, a); (s, s, b);
 (s, s, c); (s, s, d); (s, s, e); (s, s, f); (s, s, g); (s, s, h); (s, s, i); (s, s, j); (s, s, k); (s, s, l); (s, s, m); (s, s, n);
 (s, s, o); (s, s, p); (s, s, q); (s, s, r); (s, s, s); (s, s, t); (s, s, u); (s, s, v); (s, s, w); (s, s, x); (s, s, y); (s, s, z);
-(s, s, 0); (s, s, 1); (s, s, 2); (s, s, 3); (s, s, 4); (s, s, 5); (s, s, 6); (s, s, 7); (s, s, 8); (s, s, 9);}
+(s, s, 0); (s, s, 1); (s, s, 2); (s, s, 3); (s, s, 4); (s, s, 5); (s, s, 6); (s, s, 7); (s, s, 8); (s, s, 9)}

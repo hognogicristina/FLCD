@@ -1,23 +1,28 @@
-# from Scanner import Scanner
 from FA import FA
 
 
-class Main:
-    @staticmethod
-    def main():
-        fa = FA("L1/fa.in")
-        print("1. Print states")
-        print("2. Print alphabet")
-        print("3. Print output states")
-        print("4. Print initial state")
-        print("5. Print transitions")
-        print("6. Check word")
-        print("7. Get matching substring")
-        print("0. Exit")
+def print_menu():
+    print("\nMenu:")
+    print("1. Print states")
+    print("2. Print alphabet")
+    print("3. Print output states")
+    print("4. Print initial state")
+    print("5. Print transitions")
+    print("6. Check word")
+    print("7. Get matching substring")
+    print("0. Exit\n")
 
+
+if __name__ == "__main__":
+    fa = FA("utilities/fa.in")
+
+    try:
         while True:
-            option = int(input("> "))
-            if option == 1:
+            print_menu()
+            option = int(input("Enter an option: "))
+            if option == 0:
+                break  # Exit the loop and end the program
+            elif option == 1:
                 fa.print_states()
             elif option == 2:
                 fa.print_alphabet()
@@ -28,41 +33,26 @@ class Main:
             elif option == 5:
                 fa.print_transitions()
             elif option == 6:
-                word = input("Enter word: ")
-                print(fa.check_accepted(word))
+                while True:
+                    word = input("Enter a word (or type 'exit' to return to the main menu): ")
+                    if word.lower() == 'exit':
+                        break
+                    accepted = fa.check_accepted(word)
+                    if accepted:
+                        print(f"The word '{word}' is accepted.")
+                    else:
+                        print(f"The word '{word}' is NOT accepted.")
             elif option == 7:
-                word = input("Enter word: ")
-                accepted = fa.get_next_accepted(word)
-                if accepted is None:
-                    print("No matching substring")
-                else:
-                    print(accepted)
-            elif option == 0:
-                break
+                while True:
+                    word = input("Enter a word (or type 'exit' to return to the main menu): ")
+                    if word.lower() == 'exit':
+                        break
+                    longest_accepted = fa.get_next_accepted(word)
+                    if longest_accepted:
+                        print(f"The longest accepted substring is '{longest_accepted}'.")
+                    else:
+                        print("No accepted substring found.")
             else:
-                print("Invalid option")
-
-
-if __name__ == "__main__":
-    # program1 = "p1.txt"
-    # program2 = "p2.txt"
-    # program3 = "p3.txt"
-    # program1err = "p1err.txt"
-    #
-    # scanner1 = Scanner()
-    # scanner1.read_tokens()
-    # scanner1.scan(program1)
-    #
-    # scanner2 = Scanner()
-    # scanner2.read_tokens()
-    # scanner2.scan(program2)
-    #
-    # scanner3 = Scanner()
-    # scanner3.read_tokens()
-    # scanner3.scan(program3)
-    #
-    # scanner4 = Scanner()
-    # scanner4.read_tokens()
-    # scanner4.scan(program1err)
-
-    Main.main()
+                print("Invalid option. Please try again.")
+    except KeyboardInterrupt:
+        print("\nProgram interrupted. Exiting...")
