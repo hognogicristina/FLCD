@@ -1,0 +1,9 @@
+prog
+{
+identifier
+:
+int
+identifier
+:
+real
+}
