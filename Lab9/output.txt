@@ -1,0 +1,1231 @@
+p1.txt
+reserved word: prog
+separator: {
+identifier: a
+separator: :
+reserved word: int
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+identifier: #b
+separator: :
+reserved word: int
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+identifier: c
+separator: :
+reserved word: int
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+reserved word: sys
+separator: .
+reserved word: read
+separator: (
+identifier: a
+separator: )
+iostmt -> sys . read ( IDENTIFIER )
+stmt -> iostmt
+stmt -> simplstmt
+reserved word: sys
+separator: .
+reserved word: read
+separator: (
+identifier: #b
+separator: )
+iostmt -> sys . read ( IDENTIFIER )
+stmt -> iostmt
+stmt -> simplstmt
+reserved word: sys
+separator: .
+reserved word: read
+separator: (
+identifier: c
+separator: )
+iostmt -> sys . read ( IDENTIFIER )
+stmt -> iostmt
+stmt -> simplstmt
+identifier: #smallest
+separator: :
+reserved word: int
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+identifier: #smallest
+operator: =
+identifier: a
+reserved word: if
+term -> IDENTIFIER
+expression -> term
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+identifier: #smallest
+operator: >
+term -> IDENTIFIER
+expression -> term
+RELATION -> >
+identifier: #b
+separator: begin
+term -> IDENTIFIER
+expression -> term
+condition -> expression RELATION expression
+separator: :
+identifier: #smallest
+operator: =
+identifier: #b
+separator: end
+term -> IDENTIFIER
+expression -> term
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+stmtlist -> stmt
+separator: ;
+ifstmt -> if condition begin : stmtlist end ;
+structstmt -> ifstmt
+stmt -> structstmt
+reserved word: if
+identifier: #smallest
+operator: >
+term -> IDENTIFIER
+expression -> term
+RELATION -> >
+identifier: c
+separator: begin
+term -> IDENTIFIER
+expression -> term
+condition -> expression RELATION expression
+separator: :
+identifier: #smallest
+operator: =
+identifier: c
+separator: end
+term -> IDENTIFIER
+expression -> term
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+stmtlist -> stmt
+separator: ;
+ifstmt -> if condition begin : stmtlist end ;
+structstmt -> ifstmt
+stmt -> structstmt
+reserved word: sys
+separator: .
+reserved word: write
+separator: (
+identifier: #smallest
+separator: )
+iostmt -> sys . write ( IDENTIFIER )
+stmt -> iostmt
+stmt -> simplstmt
+separator: }
+stmtlist -> stmt
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+program -> prog { stmtlist }
+        OK
+
+p1err.txt
+prog - reserved word
+{ - separator
+a - identifier
+: - separator
+int - reserved word
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+Error at token 1b at line 4
+stmtlist -> stmt
+syntax error
+
+p2.txt
+prog - reserved word
+{ - separator
+x - identifier
+: - separator
+int - reserved word
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+i - identifier
+: - separator
+int - reserved word
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+#prime - identifier
+: - separator
+int - reserved word
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+sys - reserved word
+. - separator
+read - reserved word
+( - separator
+x - identifier
+) - separator
+iostmt -> sys . read ( IDENTIFIER )
+stmt -> iostmt
+stmt -> simplstmt
+i - identifier
+= - operator
+2 - integer constant
+term -> INTCONSTANT
+#prime - identifier
+expression -> term
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+= - operator
+1 - integer constant
+term -> INTCONSTANT
+while - reserved word
+expression -> term
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+i - identifier
+* - operator
+term -> IDENTIFIER
+operator -> *
+i - identifier
+< - operator
+term -> IDENTIFIER
+expression -> term
+expression -> term operator expression
+RELATION -> <
+x - identifier
+and - reserved word
+term -> IDENTIFIER
+expression -> term
+#prime - identifier
+== - operator
+term -> IDENTIFIER
+expression -> term
+RELATION -> ==
+1 - integer constant
+term -> INTCONSTANT
+begin - separator
+expression -> term
+condition -> expression RELATION expression
+condition -> expression RELATION expression and condition
+: - separator
+if - reserved word
+x - identifier
+% - operator
+term -> IDENTIFIER
+operator -> %
+i - identifier
+== - operator
+term -> IDENTIFIER
+expression -> term
+expression -> term operator expression
+RELATION -> ==
+0 - integer constant
+term -> INTCONSTANT
+begin - separator
+expression -> term
+condition -> expression RELATION expression
+: - separator
+#prime - identifier
+= - operator
+0 - integer constant
+term -> INTCONSTANT
+else - reserved word
+expression -> term
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+stmtlist -> stmt
+begin - separator
+: - separator
+i - identifier
+= - operator
+i - identifier
++ - operator
+term -> IDENTIFIER
+operator -> +
+1 - integer constant
+term -> INTCONSTANT
+end - separator
+expression -> term
+expression -> term operator expression
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+stmtlist -> stmt
+; - separator
+ifstmt -> if condition begin : stmtlist else begin : stmtlist end ;
+structstmt -> ifstmt
+stmt -> structstmt
+end - separator
+stmtlist -> stmt
+; - separator
+whilestmt -> while condition begin : stmtlist end ;
+structstmt -> whilestmt
+stmt -> structstmt
+if - reserved word
+#prime - identifier
+== - operator
+term -> IDENTIFIER
+expression -> term
+RELATION -> ==
+1 - integer constant
+term -> INTCONSTANT
+begin - separator
+expression -> term
+condition -> expression RELATION expression
+: - separator
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+"The number is prime" - string constant
+) - separator
+iostmt -> sys . write ( STRINGCONSTANT )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+endl - separator
+) - separator
+iostmt -> sys . write ( endl )
+stmt -> iostmt
+stmt -> simplstmt
+else - reserved word
+stmtlist -> stmt
+stmtlist -> stmt stmtlist
+begin - separator
+: - separator
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+"The number is not prime" - string constant
+) - separator
+iostmt -> sys . write ( STRINGCONSTANT )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+endl - separator
+) - separator
+iostmt -> sys . write ( endl )
+stmt -> iostmt
+stmt -> simplstmt
+end - separator
+stmtlist -> stmt
+stmtlist -> stmt stmtlist
+; - separator
+ifstmt -> if condition begin : stmtlist else begin : stmtlist end ;
+structstmt -> ifstmt
+stmt -> structstmt
+n - identifier
+: - separator
+int - reserved word
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+m - identifier
+: - separator
+int - reserved word
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+"n = " - string constant
+) - separator
+iostmt -> sys . write ( STRINGCONSTANT )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+read - reserved word
+( - separator
+n - identifier
+) - separator
+iostmt -> sys . read ( IDENTIFIER )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+"m = " - string constant
+) - separator
+iostmt -> sys . write ( STRINGCONSTANT )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+read - reserved word
+( - separator
+m - identifier
+) - separator
+iostmt -> sys . read ( IDENTIFIER )
+stmt -> iostmt
+stmt -> simplstmt
+remind - identifier
+: - separator
+int - reserved word
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+while - reserved word
+m - identifier
+!= - operator
+term -> IDENTIFIER
+expression -> term
+RELATION -> !=
+0 - integer constant
+term -> INTCONSTANT
+begin - separator
+expression -> term
+condition -> expression RELATION expression
+: - separator
+remind - identifier
+= - operator
+n - identifier
+% - operator
+term -> IDENTIFIER
+operator -> %
+m - identifier
+n - identifier
+term -> IDENTIFIER
+expression -> term
+expression -> term operator expression
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+= - operator
+m - identifier
+m - identifier
+term -> IDENTIFIER
+expression -> term
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+= - operator
+remind - identifier
+end - separator
+term -> IDENTIFIER
+expression -> term
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+stmtlist -> stmt
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+; - separator
+whilestmt -> while condition begin : stmtlist end ;
+structstmt -> whilestmt
+stmt -> structstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+"gcd = " - string constant
+) - separator
+iostmt -> sys . write ( STRINGCONSTANT )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+n - identifier
+) - separator
+iostmt -> sys . write ( IDENTIFIER )
+stmt -> iostmt
+stmt -> simplstmt
+a - identifier
+: - separator
+int - reserved word
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+b - identifier
+: - separator
+int - reserved word
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+c - identifier
+: - separator
+int - reserved word
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+"The equation is ax^2 + bx + c = 0" - string constant
+) - separator
+iostmt -> sys . write ( STRINGCONSTANT )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+endl - separator
+) - separator
+iostmt -> sys . write ( endl )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+"a = " - string constant
+) - separator
+iostmt -> sys . write ( STRINGCONSTANT )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+read - reserved word
+( - separator
+a - identifier
+) - separator
+iostmt -> sys . read ( IDENTIFIER )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+"b = " - string constant
+) - separator
+iostmt -> sys . write ( STRINGCONSTANT )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+read - reserved word
+( - separator
+b - identifier
+) - separator
+iostmt -> sys . read ( IDENTIFIER )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+"c = " - string constant
+) - separator
+iostmt -> sys . write ( STRINGCONSTANT )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+read - reserved word
+( - separator
+c - identifier
+) - separator
+iostmt -> sys . read ( IDENTIFIER )
+stmt -> iostmt
+stmt -> simplstmt
+#delta - identifier
+: - separator
+int - reserved word
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+#delta - identifier
+= - operator
+b - identifier
+* - operator
+term -> IDENTIFIER
+operator -> *
+b - identifier
+- - operator
+term -> IDENTIFIER
+operator -> -
+4 - integer constant
+term -> INTCONSTANT
+* - operator
+operator -> *
+a - identifier
+* - operator
+term -> IDENTIFIER
+operator -> *
+c - identifier
+sol1 - identifier
+term -> IDENTIFIER
+expression -> term
+expression -> term operator expression
+expression -> term operator expression
+expression -> term operator expression
+expression -> term operator expression
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+: - separator
+real - reserved word
+type1 -> real
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+sol2 - identifier
+: - separator
+real - reserved word
+type1 -> real
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+if - reserved word
+#delta - identifier
+< - operator
+term -> IDENTIFIER
+expression -> term
+RELATION -> <
+0 - integer constant
+term -> INTCONSTANT
+begin - separator
+expression -> term
+condition -> expression RELATION expression
+: - separator
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+"No real solutions." - string constant
+) - separator
+iostmt -> sys . write ( STRINGCONSTANT )
+stmt -> iostmt
+stmt -> simplstmt
+end - separator
+stmtlist -> stmt
+; - separator
+ifstmt -> if condition begin : stmtlist end ;
+structstmt -> ifstmt
+stmt -> structstmt
+if - reserved word
+#delta - identifier
+== - operator
+term -> IDENTIFIER
+expression -> term
+RELATION -> ==
+0 - integer constant
+term -> INTCONSTANT
+begin - separator
+expression -> term
+condition -> expression RELATION expression
+: - separator
+sol1 - identifier
+= - operator
+( - separator
+- - operator
+b - identifier
+factor -> - IDENTIFIER
+term -> factor
+) - separator
+expression -> term
+factor -> ( expression )
+term -> factor
+/ - operator
+operator -> /
+( - separator
+2 - integer constant
+term -> INTCONSTANT
+* - operator
+operator -> *
+a - identifier
+) - separator
+term -> IDENTIFIER
+expression -> term
+expression -> term operator expression
+factor -> ( expression )
+term -> factor
+end - separator
+expression -> term
+expression -> term operator expression
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+stmtlist -> stmt
+; - separator
+ifstmt -> if condition begin : stmtlist end ;
+structstmt -> ifstmt
+stmt -> structstmt
+sol1 - identifier
+= - operator
+( - separator
+( - separator
+- - operator
+b - identifier
+factor -> - IDENTIFIER
+term -> factor
+) - separator
+expression -> term
+factor -> ( expression )
+term -> factor
+- - operator
+operator -> -
+( - separator
+rad - reserved word
+( - separator
+#delta - identifier
+) - separator
+radstmt -> rad ( IDENTIFIER )
+factor -> radstmt
+term -> factor
+) - separator
+expression -> term
+factor -> ( expression )
+term -> factor
+) - separator
+expression -> term
+expression -> term operator expression
+factor -> ( expression )
+term -> factor
+/ - operator
+operator -> /
+( - separator
+2 - integer constant
+term -> INTCONSTANT
+* - operator
+operator -> *
+a - identifier
+) - separator
+term -> IDENTIFIER
+expression -> term
+expression -> term operator expression
+factor -> ( expression )
+term -> factor
+sol2 - identifier
+expression -> term
+expression -> term operator expression
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+= - operator
+( - separator
+( - separator
+- - operator
+b - identifier
+factor -> - IDENTIFIER
+term -> factor
+) - separator
+expression -> term
+factor -> ( expression )
+term -> factor
++ - operator
+operator -> +
+( - separator
+rad - reserved word
+( - separator
+#delta - identifier
+) - separator
+radstmt -> rad ( IDENTIFIER )
+factor -> radstmt
+term -> factor
+) - separator
+expression -> term
+factor -> ( expression )
+term -> factor
+) - separator
+expression -> term
+expression -> term operator expression
+factor -> ( expression )
+term -> factor
+/ - operator
+operator -> /
+( - separator
+2 - integer constant
+term -> INTCONSTANT
+* - operator
+operator -> *
+a - identifier
+) - separator
+term -> IDENTIFIER
+expression -> term
+expression -> term operator expression
+factor -> ( expression )
+term -> factor
+sys - reserved word
+expression -> term
+expression -> term operator expression
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+. - separator
+write - reserved word
+( - separator
+"2 solutions " - string constant
+) - separator
+iostmt -> sys . write ( STRINGCONSTANT )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+sol1 - identifier
+) - separator
+iostmt -> sys . write ( IDENTIFIER )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+" and " - string constant
+) - separator
+iostmt -> sys . write ( STRINGCONSTANT )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+sol2 - identifier
+) - separator
+iostmt -> sys . write ( IDENTIFIER )
+stmt -> iostmt
+stmt -> simplstmt
+} - separator
+stmtlist -> stmt
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+program -> prog { stmtlist }
+        OK
+
+p3.txt
+prog - reserved word
+{ - separator
+n - identifier
+: - separator
+int - reserved word
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+sum - identifier
+: - separator
+int - reserved word
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+i - identifier
+: - separator
+int - reserved word
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+sys - reserved word
+. - separator
+read - reserved word
+( - separator
+n - identifier
+) - separator
+iostmt -> sys . read ( IDENTIFIER )
+stmt -> iostmt
+stmt -> simplstmt
+sum - identifier
+= - operator
+0 - integer constant
+term -> INTCONSTANT
+i - identifier
+expression -> term
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+= - operator
+1 - integer constant
+term -> INTCONSTANT
+while - reserved word
+expression -> term
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+i - identifier
+<= - operator
+term -> IDENTIFIER
+expression -> term
+RELATION -> <=
+n - identifier
+begin - separator
+term -> IDENTIFIER
+expression -> term
+condition -> expression RELATION expression
+: - separator
+sum - identifier
+= - operator
+sum - identifier
++ - operator
+term -> IDENTIFIER
+operator -> +
+i - identifier
+i - identifier
+term -> IDENTIFIER
+expression -> term
+expression -> term operator expression
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+= - operator
+i - identifier
++ - operator
+term -> IDENTIFIER
+operator -> +
+1 - integer constant
+term -> INTCONSTANT
+end - separator
+expression -> term
+expression -> term operator expression
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+stmtlist -> stmt
+stmtlist -> stmt stmtlist
+; - separator
+whilestmt -> while condition begin : stmtlist end ;
+structstmt -> whilestmt
+stmt -> structstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+"Sum: " - string constant
+) - separator
+iostmt -> sys . write ( STRINGCONSTANT )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+sum - identifier
+) - separator
+iostmt -> sys . write ( IDENTIFIER )
+stmt -> iostmt
+stmt -> simplstmt
+#nr - identifier
+: - separator
+arr - reserved word
+( - separator
+int - reserved word
+type1 -> int
+) - separator
+[ - separator
+10 - integer constant
+] - separator
+arraydecl -> arr ( type1 ) [ INTCONSTANT ]
+type -> arraydecl
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+max - identifier
+: - separator
+int - reserved word
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+min - identifier
+: - separator
+int - reserved word
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+num - identifier
+: - separator
+int - reserved word
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+i - identifier
+: - separator
+int - reserved word
+type1 -> int
+type -> type1
+declaration -> IDENTIFIER : type
+stmt -> declaration
+stmt -> simplstmt
+sys - reserved word
+. - separator
+read - reserved word
+( - separator
+#nr - identifier
+) - separator
+iostmt -> sys . read ( IDENTIFIER )
+stmt -> iostmt
+stmt -> simplstmt
+max - identifier
+= - operator
+-999999 - integer constant
+term -> INTCONSTANT
+min - identifier
+expression -> term
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+= - operator
+999999 - integer constant
+term -> INTCONSTANT
+while - reserved word
+expression -> term
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+i - identifier
+< - operator
+term -> IDENTIFIER
+expression -> term
+RELATION -> <
+10 - integer constant
+term -> INTCONSTANT
+begin - separator
+expression -> term
+condition -> expression RELATION expression
+: - separator
+num - identifier
+= - operator
+#nr - identifier
+[ - separator
+i - identifier
+] - separator
+factor -> IDENTIFIER [ IDENTIFIER ]
+term -> factor
+if - reserved word
+expression -> term
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+num - identifier
+> - operator
+term -> IDENTIFIER
+expression -> term
+RELATION -> >
+max - identifier
+begin - separator
+term -> IDENTIFIER
+expression -> term
+condition -> expression RELATION expression
+: - separator
+max - identifier
+= - operator
+num - identifier
+end - separator
+term -> IDENTIFIER
+expression -> term
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+stmtlist -> stmt
+; - separator
+ifstmt -> if condition begin : stmtlist end ;
+structstmt -> ifstmt
+stmt -> structstmt
+if - reserved word
+num - identifier
+< - operator
+term -> IDENTIFIER
+expression -> term
+RELATION -> <
+min - identifier
+begin - separator
+term -> IDENTIFIER
+expression -> term
+condition -> expression RELATION expression
+: - separator
+min - identifier
+= - operator
+num - identifier
+end - separator
+term -> IDENTIFIER
+expression -> term
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+stmtlist -> stmt
+; - separator
+ifstmt -> if condition begin : stmtlist end ;
+structstmt -> ifstmt
+stmt -> structstmt
+i - identifier
+= - operator
+i - identifier
++ - operator
+term -> IDENTIFIER
+operator -> +
+1 - integer constant
+term -> INTCONSTANT
+end - separator
+expression -> term
+expression -> term operator expression
+assignstmt -> IDENTIFIER = expression
+stmt -> assignstmt
+stmt -> simplstmt
+stmtlist -> stmt
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+; - separator
+whilestmt -> while condition begin : stmtlist end ;
+structstmt -> whilestmt
+stmt -> structstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+"Max: " - string constant
+) - separator
+iostmt -> sys . write ( STRINGCONSTANT )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+max - identifier
+) - separator
+iostmt -> sys . write ( IDENTIFIER )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+"Min: " - string constant
+) - separator
+iostmt -> sys . write ( STRINGCONSTANT )
+stmt -> iostmt
+stmt -> simplstmt
+sys - reserved word
+. - separator
+write - reserved word
+( - separator
+min - identifier
+) - separator
+iostmt -> sys . write ( IDENTIFIER )
+stmt -> iostmt
+stmt -> simplstmt
+} - separator
+stmtlist -> stmt
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+stmtlist -> stmt stmtlist
+program -> prog { stmtlist }
+        OK
